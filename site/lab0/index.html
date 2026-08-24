@@ -1,0 +1,871 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="../lab1/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Lab Exercise 0 (Review on C Programming) - CS 21 26.1 Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CS 21 26.1 Labs" class="md-header__button md-logo" aria-label="CS 21 26.1 Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS 21 26.1 Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab Exercise 0 (Review on C Programming)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CS 21 26.1 Labs" class="md-nav__button md-logo" aria-label="CS 21 26.1 Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CS 21 26.1 Labs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 0
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Instructions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkpoint-item-bankers-rounding-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint Item: Banker's Rounding Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#take-home-task-replacing-substrings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Take Home Task : Replacing Substrings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Take Home Task : Replacing Substrings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restrictions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Instructions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkpoint-item-bankers-rounding-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint Item: Banker's Rounding Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#take-home-task-replacing-substrings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Take Home Task : Replacing Substrings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Take Home Task : Replacing Substrings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Restrictions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Cases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h2 align="center"> CS 21 26.1 Laboratory Exercise 0 </h2>
+<h1 align="center"> Review on C Programming </h1>
+
+<h2 id="overview">Overview</h2>
+<p>In CS 21, you will be introduced to machine language which is comprised of instructions that computer processors are designed to execute. All computer programs are essentially translated into <strong>machine language</strong>, directly or indirectly, by compilers and interpreters.</p>
+<p>High-level programming languages such as Python provide a high level of abstraction that hides the complexity of the underlying machine instructions from programmers; this allows for the creation of complex programs without requiring programmers to delve into the lower-level details of machine language. Machine language is generally cumbersome for humans to process as it is primarily designed for processors. A more human-readable bridging language called assembly language will be introduced so that the study of machine language is made more comprehensible.</p>
+<p>Since all programs are translated into machine language (or equivalently, assembly language), understanding the principles behind low-level programs
+enables programmers to craft high-level code that results in a more efficient set of machine instructions. Towards this end, you will be writing programs in assembly language; this is relatively more involved as the layers of abstraction of high-level languages that make programming much more manageable are not present at this level.</p>
+<p>CS 21 starts off by introducing the C programming language which provides a lower level of abstraction compared to a language such as Python. While fewer abstractions requires more manual effort and attention to detail from the programmer, it enables more fine-grained control in how programs are translated into machine instructions; this makes it ideal for systems programming (e.g., operating systems, limited-resource devices) in which efficient processor execution is usually of greater concern. C shares much more functionally with assembly and machine language than Python does; knowing the fundamentals of C makes the study of assembly and machine language much more manageable, especially coming from a high-level language such as Python.</p>
+<h2 id="general-instructions">General Instructions</h2>
+<p>In this laboratory activity, you are to work on <strong>1 Checkpoint Task</strong> and <strong>1 Take Home Task</strong> that will review your skills on C programming.</p>
+<div class="admonition info">
+<p class="admonition-title">Important Reminder</p>
+<p>You <strong>must finish and show</strong> your working <strong>Checkpoint Task</strong>  to your lab handler before the end of the laboratory period. This lab activity is <strong>non-graded</strong>.</p>
+</div>
+<h3 id="_1"></h3>
+<h3 id="checkpoint-item-bankers-rounding-rule">Checkpoint Item: Banker's Rounding Rule</h3>
+<p>The Banker's Rounding is a floating-point rounding algorithm specified by the IEEE 754 standard in which a number equidistant from the two nearest integers are rounded to the nearest even integer. The banker's rounding has the following rules:</p>
+<ol>
+<li>When the number to be rounded (the rounding digit) is followed by <code>0</code>,<code>1</code>,<code>2</code>,<code>3</code> or <code>4</code>, the rounding digit remains the same.</li>
+<li>When the number to be rounded (the rounding digit) is followed by a <code>6</code>,<code>7</code>,<code>8</code> or a <code>9</code>, the number is rounded up. </li>
+<li>When the number to be rounded (the rounding digit) is follwed by a <code>5</code>, the rounding rule is determined by the number after <code>5</code>:<ul>
+<li>When there is a number after <code>5</code>, round up. </li>
+<li>When there is no number after <code>5</code>, check the number before <code>5</code>. If it is an odd number, round up, otherwise round down.</li>
+</ul>
+</li>
+</ol>
+<p>To illustrate, here are some examples when the following numbers are rounded to the <code>nearest hundredths</code>:</p>
+<table>
+<thead>
+<tr>
+<th><code>Number</code></th>
+<th><code>Banker's Rounding Result</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.005</code></td>
+<td><code>0.00</code></td>
+</tr>
+<tr>
+<td><code>0.015</code></td>
+<td><code>0.02</code></td>
+</tr>
+<tr>
+<td><code>0.027</code></td>
+<td><code>0.03</code></td>
+</tr>
+<tr>
+<td><code>1.025</code></td>
+<td><code>1.02</code></td>
+</tr>
+<tr>
+<td><code>1.0256</code></td>
+<td><code>1.03</code></td>
+</tr>
+<tr>
+<td><code>5.0287</code></td>
+<td><code>5.03</code></td>
+</tr>
+<tr>
+<td><code>4</code></td>
+<td><code>4.00</code></td>
+</tr>
+</tbody>
+</table>
+<p>Write a C Program that will ask for a number input <code>N</code> from the user and print the number rounded to the nearest hundredths using the Banker's Rounding Rule.</p>
+<h3 id="take-home-task-replacing-substrings">Take Home Task : Replacing Substrings</h3>
+<p>Implement a function <code>replace_substring</code> that takes a string <code>source</code> as well as substrings <code>target</code> and <code>replacement</code>, and returns a string with all instances of <code>target</code> in <code>source</code> with <code>replacement</code>.</p>
+<p>Replacements must be done left-to-right. If <code>target</code> is not found in <code>source</code>, the original <code>source</code> string must be returned. If <code>target</code> is an empty string, the original <code>source</code> string must also be returned.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The address of a string is the same as the address of the first character of the string in memory.</p>
+<p>The end of a string is always the <code>NULL</code> character with a byte value of <code>0</code>.</p>
+</div>
+<p>Your function must follow the following template:</p>
+<h4 id="restrictions">Restrictions</h4>
+<ol>
+<li>The only headers that may be included are:</li>
+<li><code>&lt;stdio.h&gt;</code></li>
+<li><code>&lt;stdlib.h&gt;</code></li>
+<li><code>&lt;assert.h&gt;</code></li>
+<li><code>&lt;string.h&gt;</code> - only <code>strlen()</code> is allowed to be used</li>
+<li>Searching via regular expressions is not allowed.</li>
+<li>Neither <code>source</code>, <code>target</code>, nor <code>replacement</code> can be modified.</li>
+<li>The substring replacement is case-sensitive.</li>
+</ol>
+<h4 id="example-usage">Example Usage</h4>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">replace_substring</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">source</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">                        </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">                        </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">replacement</span><span class="p">){</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="c1">//insert your code here.</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>You may use the following testcase to validate your code:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">evaluate_replace_string</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">test_string</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">test_result</span><span class="p">){</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">test_string</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">||</span><span class="n">test_result</span><span class="p">[</span><span class="n">i</span><span class="p">]){</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">test_string</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">!=</span><span class="n">test_result</span><span class="p">[</span><span class="n">i</span><span class="p">]){</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="o">++</span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">test_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Thirty-three thirsty, thundering thoroughbreds thumped Mr. Thurber on Thursday.&quot;</span><span class="p">;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">test_substring</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;th&quot;</span><span class="p">;</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">test_replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;squw&quot;</span><span class="p">;</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">test_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Thirty-squwree squwirsty, squwundering squworoughbreds squwumped Mr. Thurber on Thursday.&quot;</span><span class="p">;</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">replaced_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">replace_substring</span><span class="p">(</span><span class="n">test_string</span><span class="p">,</span><span class="w"> </span><span class="n">test_substring</span><span class="p">,</span><span class="w"> </span><span class="n">test_replace</span><span class="p">);</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Test case passed: %s&quot;</span><span class="p">,</span><span class="n">evaluate_replace_string</span><span class="p">(</span><span class="n">replaced_string</span><span class="p">,</span><span class="w"> </span><span class="n">test_result</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;False&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;True&quot;</span><span class="p">);</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="test-cases">Test Cases</h4>
+<p>You may use these additional test cases to ensure your function is properly implemented.</p>
+<table>
+<thead>
+<tr>
+<th><code>source</code></th>
+<th><code>target</code></th>
+<th><code>replacement</code></th>
+<th>Expected String <code>replaced_string</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"Hello hello CS21!"</code></td>
+<td><code>"Hello"</code></td>
+<td><code>"Goodbye"</code></td>
+<td><code>"Goodbye hello CS21!"</code></td>
+</tr>
+<tr>
+<td><code>"Hello hello CS21!"</code></td>
+<td><code>"hEllO"</code></td>
+<td><code>"goodBye"</code></td>
+<td><code>"Hello hello CS21!"</code></td>
+</tr>
+<tr>
+<td><code>"ababABABabab"</code></td>
+<td><code>"ba"</code></td>
+<td><code>"cal"</code></td>
+<td><code>"acalbABABacalb"</code></td>
+</tr>
+<tr>
+<td><code>"ggGGGggGgGGGGGGgG"</code></td>
+<td><code>"gg"</code></td>
+<td><code>"All"</code></td>
+<td><code>"AllGGGAllGgGGGGGGgG"</code></td>
+</tr>
+<tr>
+<td><code>"aa aaa aaaa aaaaa"</code></td>
+<td><code>"aa"</code></td>
+<td><code>"rt"</code></td>
+<td><code>"rt rta rtrt rtrta"</code></td>
+</tr>
+<tr>
+<td><code>"Agree"</code></td>
+<td><code>"E"</code></td>
+<td><code>"EEEEEE"</code></td>
+<td><code>"Agree"</code></td>
+</tr>
+<tr>
+<td><code>"hello"</code></td>
+<td><code>"hello"</code></td>
+<td><code>"Hello World!"</code></td>
+<td><code>"Hello World!"</code></td>
+</tr>
+<tr>
+<td><code>"hello"</code></td>
+<td><code>"hello"</code></td>
+<td><code>""</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>"run"</code></td>
+<td><code>"walk"</code></td>
+<td><code>"sprint"</code></td>
+<td><code>"run"</code></td>
+</tr>
+<tr>
+<td><code>"Zero,one"</code></td>
+<td><code>"o"</code></td>
+<td><code>"0"</code></td>
+<td><code>"Zer0,0ne"</code></td>
+</tr>
+<tr>
+<td><code>"Zer0,0ne"</code></td>
+<td><code>"0"</code></td>
+<td><code>"o"</code></td>
+<td><code>"Zero,one"</code></td>
+</tr>
+<tr>
+<td><code>"pointer"</code></td>
+<td><code>""</code></td>
+<td><code>""</code></td>
+<td><code>"pointer"</code></td>
+</tr>
+<tr>
+<td><code>"spa ce dou t"</code></td>
+<td><code>"space"</code></td>
+<td><code>"tab"</code></td>
+<td><code>"spa ce dou t"</code></td>
+</tr>
+<tr>
+<td><code>"0123456789ABCDEF"</code></td>
+<td><code>"9AB"</code></td>
+<td><code>"Gabby"</code></td>
+<td><code>"012345678GabbyCDEF"</code></td>
+</tr>
+<tr>
+<td><code>""</code></td>
+<td><code>"9AB"</code></td>
+<td><code>"Gabby"</code></td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../js/mermaid.mjs" type="module"></script>
+      
+    
+  </body>
+</html>
