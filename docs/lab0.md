@@ -47,6 +47,14 @@ To illustrate, here are some examples when the following numbers are rounded to 
 
 Write a C Program that will ask for a number input `N` from the user and print the number rounded to the nearest hundredths using the Banker's Rounding Rule.
 
+## Constraints
+- Assume that input `N` is a string having values between "xx0.00000" and "999.99999", inclusive
+- Expected output format: ["0.00", "1000.99"]
+
+!!! hint
+
+    You may process the string characters as decimal numbers as long as the input `N` and the output is a string
+
 
 ### Take Home Task : Replacing Substrings
 
