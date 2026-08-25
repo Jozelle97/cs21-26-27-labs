@@ -55,7 +55,6 @@ Write a C Program that will ask for a number input `N` from the user and print t
 
     You may process the string characters as decimal numbers as long as the input `N` and the output is a string
 
-
 ### Take Home Task : Replacing Substrings
 
 Implement a function `replace_substring` that takes a string `source` as well as substrings `target` and `replacement`, and returns a string with all instances of `target` in `source` with `replacement`.
