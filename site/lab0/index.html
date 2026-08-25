@@ -314,17 +314,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#constraints_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Constraints
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#take-home-task-replacing-substrings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -383,87 +372,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lab12.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab 1
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lab2.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab 2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../lab3.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Lab 3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -553,17 +461,6 @@
   
     <nav class="md-nav" aria-label="Constraints">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constraints_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Constraints
-      
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#take-home-task-replacing-substrings" class="md-nav__link">
@@ -704,12 +601,15 @@ enables programmers to craft high-level code that results in a more efficient se
 </tbody>
 </table>
 <p>Write a C Program that will ask for a number input <code>N</code> from the user and print the number rounded to the nearest hundredths using the Banker's Rounding Rule.</p>
-<h1 id="constraints">Constraints</h1>
-<h4 id="constraints_1">Constraints</h4>
+<h2 id="constraints">Constraints</h2>
 <ul>
-<li>Assume that input <code>N</code> is <span class="arithmatex">\(xx0.00000 \le N \le 999.99999\)</span></li>
-<li>Expected output Format:["0.00", "1000.99"]</li>
+<li>Assume that input <code>N</code> is a string having values between "xx0.00000" and "999.99999", inclusive</li>
+<li>Expected output format: ["0.00", "1000.99"]</li>
 </ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You may process the string characters as decimal numbers as long as the input <code>N</code> and the output is a string</p>
+</div>
 <h3 id="take-home-task-replacing-substrings">Take Home Task : Replacing Substrings</h3>
 <p>Implement a function <code>replace_substring</code> that takes a string <code>source</code> as well as substrings <code>target</code> and <code>replacement</code>, and returns a string with all instances of <code>target</code> in <code>source</code> with <code>replacement</code>.</p>
 <p>Replacements must be done left-to-right. If <code>target</code> is not found in <code>source</code>, the original <code>source</code> string must be returned. If <code>target</code> is an empty string, the original <code>source</code> string must also be returned.</p>

@@ -22,7 +22,6 @@ A practice task is provided in the next section to help you warm up prior to the
 
 ## Relevant links
 
-- **Google Classroom (slides, submission bin):** [https://classroom.google.com/u/2/c/ODQwNDkwODYxODg3](https://classroom.google.com/u/2/c/ODQwNDkwODYxODg3)
 - **RISC-V Green Card** [https://drive.google.com/file/d/1xSll1ON5cSaOQhoGxpkvr4fKe7lGQFy3/view](https://drive.google.com/file/d/1xSll1ON5cSaOQhoGxpkvr4fKe7lGQFy3/view)
 
 ## Practice Task
