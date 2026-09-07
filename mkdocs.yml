@@ -5,22 +5,28 @@ theme:
 
 plugins:
   - search
+
 markdown_extensions:
   - tables
+
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
+
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+
   - admonition
+
   - pymdownx.arithmatex:
       generic: true
+
   - attr_list
   - md_in_html
   - pymdownx.blocks.caption
   - pymdownx.tilde
+
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -33,7 +39,6 @@ extra_javascript:
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
   - js/mermaid.mjs
 
-
 extra_css:
   - https://unpkg.com/katex@0/dist/katex.min.css
   - stylesheets/extra.css
@@ -41,3 +46,4 @@ extra_css:
 nav:
   - Lab 0: lab0.md
   - Lab 1: lab1.md
+  - Lab 2: lab2.md
