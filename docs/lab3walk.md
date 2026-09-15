@@ -7,7 +7,7 @@ title: CS 21 26.1 Lab 3 Example Walkthrough
 
 ## Relevant links
 
-- **Function Call Visualizer** [Open the Recursive Parser Stack Visualizer](demos/index.html)
+- **Function Call Visualizer** [Open the Recursive Parser Stack Visualizer](demos/index2.html)
 
 ## Important Result
 
