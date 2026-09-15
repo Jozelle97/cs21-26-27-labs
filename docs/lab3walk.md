@@ -3,7 +3,7 @@ title: CS 21 26.1 Lab 3 Example Walkthrough
 ---
 
 <h2 align="center"> CS 21 26.1 Lab 3 Walkthrough </h2>
-<h1 align="center"> Function Call Sequence for `parse_expression("(2+10)*2")` </h1>
+<h1 align="center"> Function Call Sequence for `parse_expression()` </h1>
 
 ## Relevant links
 
