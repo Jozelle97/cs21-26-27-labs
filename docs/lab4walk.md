@@ -1,38 +1,21 @@
 ---
-title: RISC-V Single Cycle Processor
+title: CS 21 26.1 Lab 4 Walkthrough
 ---
 
-<h2 align="center"> CS 21 26.1 Laboratory Exercise 4 </h2>
-<h1 align="center"> RISC-V Single Cycle Processor </h1>
+<h2 align="center"> CS 21 26.1 Lab 4 Walkthrough </h2>
+<h1 align="center"> Partial Single Cycle Processor in Logisim </h1>
 
-## Overview
-
+### Overview
 The RISC-V single-cycle processor is a sequential circuit made up of registers, memory, multiplexers, and other combinational components. In the lecture, we have derived the Single Cycle Processor Datapath. In this lab activity, you will be using Logisim to modify an existing single-cycle processor implementation to support other kinds of instructions.
 
 !!! warning "Ripes version"
 
     For uniformity, use the [https://ripes.upd-dcs.work](https://ripes.upd-dcs.work) instead of a locally installed RIPES.
 
-## General Instructions
+- In this lab and the following lab activities, we will be using Logisim. Install [Logisim-Evolution](https://github.com/UPD-DCS/logisim-evolution) in your computers.
+- Download the **Lab 4 Single Cycle Processor Template** here: [https://drive.google.com/file/d/1-WUrZY4d_uMD2QblyLCW-kN8QcwqnL-S/view?usp=sharing](https://drive.google.com/file/d/1-WUrZY4d_uMD2QblyLCW-kN8QcwqnL-S/view?usp=sharing)
 
-For this laboratory activity, you are to work on:
-
-1. **One Checkpoint Item** (due by the end of the lab period)
-2. **Two Take-Home Items** (due before the next lab meeting)
-
-Save your outputs to the checkpoint as `lab04_item1.circ` and submit this to the Google Classroom.
-
-!!! warning "Important Reminder"
-    You **must finish and submit** your working checkpoint outputs and **show them to the lab instructor before the end of the lab meeting**. 
-
-- **Lab 5 Logisim Template:** [https://drive.google.com/file/d/1-WUrZY4d_uMD2QblyLCW-kN8QcwqnL-S/view?usp=sharing](https://drive.google.com/file/d/1-WUrZY4d_uMD2QblyLCW-kN8QcwqnL-S/view?usp=sharing)
-
-
-## Guided Walkthrough
-
-### Overview
-
-A [Logisim-Evolution](https://github.com/UPD-DCS/logisim-evolution) template for a RISC-V single-cycle processor can be downloaded via the link in the previous section. This processor implementation supports the following instructions:
+The RISC-V single cycle processor in the provided logisim template supports the following instructions:
 
 - `lw`
 - `sw`
@@ -45,7 +28,7 @@ A [Logisim-Evolution](https://github.com/UPD-DCS/logisim-evolution) template for
 - `beq`
 - `jal`
 
-Understand the single-cycle processor template. Note that the ALU is _incomplete_, causing R-type and I-type instructions not listed above to yield incorrect results.
+Understand the single-cycle processor template. Note that the ALU is **incomplete**, causing R-type and I-type instructions not listed above to yield incorrect results.
 
 ### Walkthrough #1: Running a single instruction
 
@@ -232,56 +215,3 @@ Create another `IsXor` tunnel, then connect it to a combinational circuit that:
 
 Verify that `ALUControl` now outputs a valid value for any `xori` instruction and that the resulting register values of the program loaded earlier are now consistent with those of the Ripes execution.
 
-
-## Checkpoint Tasks
-### Checkpoint Item 1: Human Datapath Role-Play in Class (30/100)
-### Checkpoint Item 2: Make the SCP capable of running `auipc` (40/100)
-`auipc` means `Add Upper Immediate to PC`. It adds an immediate shifted left by 12 bits to the address of the `auipc` instruction, then stores the result in a register. In particular, `rd = PC + (sign-extended immediate << 12)`
-
-The `auipc` is a U-type basic instruction useful for accessing data or jumping to code relative to the current instruction’s address. In the following example RISC-V code below, the `auipc` helps supply a large offset value while the `addi` supplies to a smaller offset value. Together, they construct a PC-relative address.
-
-```mips
-# Assume auipc is located at address 0x1000
-auipc t0, 0x2       # t0 = 0x1000 + 0x2000 = 0x3000
-addi  t0, t0, 0x40  # t0 = 0x3040
-lw    t1, 0(t0)     # Load a 32-bit word from address 0x3040
-```
-You checkpoint task is to modify the given Single Cycle Logisim circuit to support the U-type instruction `auipc`.
-
-Ensure that all other instructions that were supported before by the template still work as intended. You are allowed to use tunnels.
-
-Save the resulting circuit as `lab04_item1.circ`.
-
-### Expected Result
-
-To ensure that your Checkpoint #1 works as intended and does not destroy any other pre-existing functionalities of the circuit, run this code:
-
-```mips
-main:
-  auipc x31, 0xf0000
-  addi x1, x0, 10
-
-loop:
-  auipc x30, 0x12345
-  add x31, x31, x30
-  addi x1, x1, -1
-  beq x1, x0, done
-  beq x0, x0, loop
-
-done:
-  add x0, x0, x0
-```
-
-Ensure that the simulation results in the following register values _(with all unstated registers equal to `0x00000000`)_:
-
-```
-x30 = 0x12345008
-x31 = 0xa60b2050
-```
-
-## Take Home: Enhanced SCP (30/100)
-### Item 1: Branch-Capable SCP (10/100)
-Starting from the working SCP template after Walkthrough 3, add microarchitecture support for a `bne` and `blt` instruction. Save this working circuit as `lab04_takehome1.circ`
-
-### Item 2: Memory Interfacing Instructions (20/100)
-Starting from the working SCP circuit capable of `bne` and `blt` from Item 1, add microarchitecture support for a `lb` and `sb` instruction. Save this working circuit as `lab04_takehome2.circ`
