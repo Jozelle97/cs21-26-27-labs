@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../lab3/">
+      
       
       
         
@@ -19,7 +21,7 @@
     
     
       
-        <title>RISC-V Single Cycle Processor - CS 21 26.1 Labs</title>
+        <title>CS 21 26.1 Lab 4 Walkthrough - CS 21 26.1 Labs</title>
       
     
     
@@ -100,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RISC-V Single Cycle Processor
+              CS 21 26.1 Lab 4 Walkthrough
             
           </span>
         </div>
@@ -467,18 +469,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -499,7 +503,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -514,10 +518,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../lab4walk/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 Guide
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -533,6 +562,68 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#walkthrough-1-running-a-single-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Walkthrough #1: Running a single instruction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#walkthrough-2-running-an-entire-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Walkthrough #2: Running an entire program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#walkthrough-3-support-for-xori" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Walkthrough #3: Support for xori
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -581,40 +672,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#general-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        General Instructions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guided-walkthrough" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Guided Walkthrough
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Guided Walkthrough">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#overview_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#walkthrough-1-running-a-single-instruction" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -624,8 +681,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#walkthrough-2-running-an-entire-program" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -635,8 +692,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#walkthrough-3-support-for-xori" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -644,100 +701,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#checkpoint-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Checkpoint Tasks
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Checkpoint Tasks">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#checkpoint-item-1-human-datapath-role-play-in-class-30100" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Checkpoint Item 1: Human Datapath Role-Play in Class (30/100)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#checkpoint-item-2-make-the-scp-capable-of-running-auipc-40100" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Checkpoint Item 2: Make the SCP capable of running auipc (40/100)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#expected-result" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Expected Result
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#take-home-enhanced-scp-30100" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Take Home: Enhanced SCP (30/100)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Take Home: Enhanced SCP (30/100)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#item-1-branch-capable-scp-10100" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Item 1: Branch-Capable SCP (10/100)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#item-2-memory-interfacing-instructions-20100" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Item 2: Memory Interfacing Instructions (20/100)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -758,32 +721,20 @@
 
 
 
-<h2 align="center"> CS 21 26.1 Laboratory Exercise 4 </h2>
-<h1 align="center"> RISC-V Single Cycle Processor </h1>
+<h2 align="center"> CS 21 26.1 Lab 4 Walkthrough </h2>
+<h1 align="center"> Partial Single Cycle Processor in Logisim </h1>
 
-<h2 id="overview">Overview</h2>
+<h3 id="overview">Overview</h3>
 <p>The RISC-V single-cycle processor is a sequential circuit made up of registers, memory, multiplexers, and other combinational components. In the lecture, we have derived the Single Cycle Processor Datapath. In this lab activity, you will be using Logisim to modify an existing single-cycle processor implementation to support other kinds of instructions.</p>
 <div class="admonition warning">
 <p class="admonition-title">Ripes version</p>
 <p>For uniformity, use the <a href="https://ripes.upd-dcs.work">https://ripes.upd-dcs.work</a> instead of a locally installed RIPES.</p>
 </div>
-<h2 id="general-instructions">General Instructions</h2>
-<p>For this laboratory activity, you are to work on:</p>
-<ol>
-<li><strong>One Checkpoint Item</strong> (due by the end of the lab period)</li>
-<li><strong>Two Take-Home Items</strong> (due before the next lab meeting)</li>
-</ol>
-<p>Save your outputs to the checkpoint as <code>lab04_item1.circ</code> and submit this to the Google Classroom.</p>
-<div class="admonition warning">
-<p class="admonition-title">Important Reminder</p>
-<p>You <strong>must finish and submit</strong> your working checkpoint outputs and <strong>show them to the lab instructor before the end of the lab meeting</strong>. </p>
-</div>
 <ul>
-<li><strong>Lab 5 Logisim Template:</strong> <a href="https://drive.google.com/file/d/1-WUrZY4d_uMD2QblyLCW-kN8QcwqnL-S/view?usp=sharing">https://drive.google.com/file/d/1-WUrZY4d_uMD2QblyLCW-kN8QcwqnL-S/view?usp=sharing</a></li>
+<li>In this lab and the following lab activities, we will be using Logisim. Install <a href="https://github.com/UPD-DCS/logisim-evolution">Logisim-Evolution</a> in your computers.</li>
+<li>Download the <strong>Lab 4 Single Cycle Processor Template</strong> here: <a href="https://drive.google.com/file/d/1-WUrZY4d_uMD2QblyLCW-kN8QcwqnL-S/view?usp=sharing">https://drive.google.com/file/d/1-WUrZY4d_uMD2QblyLCW-kN8QcwqnL-S/view?usp=sharing</a></li>
 </ul>
-<h2 id="guided-walkthrough">Guided Walkthrough</h2>
-<h3 id="overview_1">Overview</h3>
-<p>A <a href="https://github.com/UPD-DCS/logisim-evolution">Logisim-Evolution</a> template for a RISC-V single-cycle processor can be downloaded via the link in the previous section. This processor implementation supports the following instructions:</p>
+<p>The RISC-V single cycle processor in the provided logisim template supports the following instructions:</p>
 <ul>
 <li><code>lw</code></li>
 <li><code>sw</code></li>
@@ -796,7 +747,7 @@
 <li><code>beq</code></li>
 <li><code>jal</code></li>
 </ul>
-<p>Understand the single-cycle processor template. Note that the ALU is <em>incomplete</em>, causing R-type and I-type instructions not listed above to yield incorrect results.</p>
+<p>Understand the single-cycle processor template. Note that the ALU is <strong>incomplete</strong>, causing R-type and I-type instructions not listed above to yield incorrect results.</p>
 <h3 id="walkthrough-1-running-a-single-instruction">Walkthrough #1: Running a single instruction</h3>
 <p>Suppose we want the processor to execute the following instruction:</p>
 <div class="language-mips highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">addi</span><span class="w">  </span>x1<span class="nb">,</span><span class="w"> </span>zero<span class="nb">,</span><span class="w"> </span><span class="kc">21</span>
@@ -971,44 +922,6 @@
 <li>Outputs <code>0</code> otherwise</li>
 </ul>
 <p>Verify that <code>ALUControl</code> now outputs a valid value for any <code>xori</code> instruction and that the resulting register values of the program loaded earlier are now consistent with those of the Ripes execution.</p>
-<h2 id="checkpoint-tasks">Checkpoint Tasks</h2>
-<h3 id="checkpoint-item-1-human-datapath-role-play-in-class-30100">Checkpoint Item 1: Human Datapath Role-Play in Class (30/100)</h3>
-<h3 id="checkpoint-item-2-make-the-scp-capable-of-running-auipc-40100">Checkpoint Item 2: Make the SCP capable of running <code>auipc</code> (40/100)</h3>
-<p><code>auipc</code> means <code>Add Upper Immediate to PC</code>. It adds an immediate shifted left by 12 bits to the address of the <code>auipc</code> instruction, then stores the result in a register. In particular, <code>rd = PC + (sign-extended immediate &lt;&lt; 12)</code></p>
-<p>The <code>auipc</code> is a U-type basic instruction useful for accessing data or jumping to code relative to the current instruction’s address. In the following example RISC-V code below, the <code>auipc</code> helps supply a large offset value while the <code>addi</code> supplies to a smaller offset value. Together, they construct a PC-relative address.</p>
-<p><div class="language-mips highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c"># Assume auipc is located at address 0x1000</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>auipc<span class="w"> </span>t0<span class="nb">,</span><span class="w"> </span><span class="kc">0</span>x2<span class="w">       </span><span class="c"># t0 = 0x1000 + 0x2000 = 0x3000</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">addi</span><span class="w">  </span>t0<span class="nb">,</span><span class="w"> </span>t0<span class="nb">,</span><span class="w"> </span><span class="kc">0</span>x40<span class="w">  </span><span class="c"># t0 = 0x3040</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">lw</span><span class="w">    </span>t1<span class="nb">,</span><span class="w"> </span><span class="kc">0</span>(t0)<span class="w">     </span><span class="c"># Load a 32-bit word from address 0x3040</span>
-</span></code></pre></div>
-You checkpoint task is to modify the given Single Cycle Logisim circuit to support the U-type instruction <code>auipc</code>.</p>
-<p>Ensure that all other instructions that were supported before by the template still work as intended. You are allowed to use tunnels.</p>
-<p>Save the resulting circuit as <code>lab04_item1.circ</code>.</p>
-<h3 id="expected-result">Expected Result</h3>
-<p>To ensure that your Checkpoint #1 works as intended and does not destroy any other pre-existing functionalities of the circuit, run this code:</p>
-<div class="language-mips highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">main:</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>auipc<span class="w"> </span>x31<span class="nb">,</span><span class="w"> </span><span class="kc">0</span>xf0000
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="k">addi</span><span class="w"> </span>x1<span class="nb">,</span><span class="w"> </span>x0<span class="nb">,</span><span class="w"> </span><span class="kc">10</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nf">loop:</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span>auipc<span class="w"> </span>x30<span class="nb">,</span><span class="w"> </span><span class="kc">0</span>x12345
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="k">add</span><span class="w"> </span>x31<span class="nb">,</span><span class="w"> </span>x31<span class="nb">,</span><span class="w"> </span>x30
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="k">addi</span><span class="w"> </span>x1<span class="nb">,</span><span class="w"> </span>x1<span class="nb">,</span><span class="w"> </span><span class="kc">-1</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="k">beq</span><span class="w"> </span>x1<span class="nb">,</span><span class="w"> </span>x0<span class="nb">,</span><span class="w"> </span>done
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="k">beq</span><span class="w"> </span>x0<span class="nb">,</span><span class="w"> </span>x0<span class="nb">,</span><span class="w"> </span>loop
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nf">done:</span>
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">  </span><span class="k">add</span><span class="w"> </span>x0<span class="nb">,</span><span class="w"> </span>x0<span class="nb">,</span><span class="w"> </span>x0
-</span></code></pre></div>
-<p>Ensure that the simulation results in the following register values <em>(with all unstated registers equal to <code>0x00000000</code>)</em>:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>x30 = 0x12345008
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>x31 = 0xa60b2050
-</span></code></pre></div>
-<h2 id="take-home-enhanced-scp-30100">Take Home: Enhanced SCP (30/100)</h2>
-<h3 id="item-1-branch-capable-scp-10100">Item 1: Branch-Capable SCP (10/100)</h3>
-<p>Starting from the working SCP template after Walkthrough 3, add microarchitecture support for a <code>bne</code> and <code>blt</code> instruction. Save this working circuit as <code>lab04_takehome1.circ</code></p>
-<h3 id="item-2-memory-interfacing-instructions-20100">Item 2: Memory Interfacing Instructions (20/100)</h3>
-<p>Starting from the working SCP circuit capable of <code>bne</code> and <code>blt</code> from Item 1, add microarchitecture support for a <code>lb</code> and <code>sb</code> instruction. Save this working circuit as <code>lab04_takehome2.circ</code></p>
 
 
 
