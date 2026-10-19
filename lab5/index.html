@@ -1,0 +1,1257 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>RISC-V RISC-V Multi Cycle Processor - CS 21 26.1 Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CS 21 26.1 Labs" class="md-header__button md-logo" aria-label="CS 21 26.1 Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS 21 26.1 Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RISC-V RISC-V Multi Cycle Processor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CS 21 26.1 Labs" class="md-nav__button md-logo" aria-label="CS 21 26.1 Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CS 21 26.1 Labs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab 3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab 4
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab 5
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Instructions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relevant-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relevant Links
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guided-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guided Walkthrough
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guided Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#walkthrough-1-testing-a-simple-r-type-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Walkthrough #1: Testing a simple R-type Instruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waltkthrough-2-adding-a-hypothetical-jal8-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waltkthrough #2: Adding a Hypothetical jal8 instruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#designing-a-new-jal8-control-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Designing a new JAL8 control state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-the-new-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementing the new state
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkpoint-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint Tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Checkpoint Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checkpoint-item-1-ensure-that-your-jal8-implementation-is-working-20100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint Item 1: Ensure that your JAL8 implementation is working (20/100)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkpoint-item-2-make-the-mcp-capable-of-running-bne-40100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkpoint Item 2: Make the MCP capable of running bne (40/100)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#take-home-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Take Home Problems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Take Home Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#item-1-make-the-mcp-capable-of-running-xori-20100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Item 1: Make the MCP capable of running xori (20/100)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#item-2-mcp-capable-of-sll-20100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Item 2: MCP Capable of sll (20/100)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h2 align="center"> CS 21 26.1 Laboratory Exercise 5 </h2>
+<h1 align="center"> RISC-V Multi Cycle Processor </h1>
+
+<h2 id="overview">Overview</h2>
+<p>In the lecture, we have derived the Multi Cycle Processor Datapath.  You will be using Logisim to modify an existing multicycle RISC-V processor implementation to support other kinds of instructions.</p>
+<div class="admonition warning">
+<p class="admonition-title">Ripes version</p>
+<p>For uniformity, use the <a href="https://ripes.upd-dcs.work">https://ripes.upd-dcs.work</a> instead of a locally installed RIPES.</p>
+</div>
+<h2 id="general-instructions">General Instructions</h2>
+<p>For this laboratory activity, you are to work on:</p>
+<ol>
+<li><strong>Two Checkpoint Items</strong> (due by the end of the lab period)</li>
+<li><strong>Two Take-Home Items</strong> (due before the next lab meeting)</li>
+</ol>
+<h2 id="relevant-links">Relevant Links</h2>
+<ul>
+<li><strong>Ripes Fork:</strong> <a href="https://ripes.upd-dcs.work">https://ripes.upd-dcs.work</a></li>
+<li><strong>Lab 5 Logisim Template:</strong> <a href="https://drive.google.com/file/d/1lFRU2wb9Ypbz4tH-AI0bqT_M0WGh1nil/view?usp=sharing">https://drive.google.com/file/d/1lFRU2wb9Ypbz4tH-AI0bqT_M0WGh1nil/view?usp=sharing</a></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Quick conversion shell script</p>
+<p>Recall from Lab 4, you learned how to generate a <code>logisim.txt</code> file that you can upload as an image into the instruction memory in Logisim. After copying the assembly version of your code from the Ripes simulator and saving it in <code>assembly.txt</code>, the following command automatically transforms the said output into its Logisim-ready form in <code>logisim.txt</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>awk<span class="w"> </span><span class="s1">&#39;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="s1">BEGIN { print &quot;v3.0 hex words&quot; }</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s1">$1 ~ /^[[:xdigit:]]+:$/ &amp;&amp;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s1">$2 ~ /^[[:xdigit:]]+$/ &amp;&amp;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s1">length($2) == 8 { print $2 }</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s1">&#39;</span><span class="w"> </span>assembly.txt<span class="w"> </span>&gt;<span class="w"> </span>logisim.txt
+</span></code></pre></div>
+</div>
+<h2 id="guided-walkthrough">Guided Walkthrough</h2>
+<h3 id="overview_1">Overview</h3>
+<p>Download the Lab 5 Logisim Template using the link above. This file should contain a multicylce processor implementation that supports the following instructions:</p>
+<ul>
+<li><code>lw</code></li>
+<li><code>sw</code></li>
+<li><code>add</code></li>
+<li><code>sub</code></li>
+<li><code>and</code></li>
+<li><code>or</code></li>
+<li><code>slt</code></li>
+<li><code>addi</code></li>
+<li><code>beq</code></li>
+<li><code>jal</code></li>
+</ul>
+<p>Note that the ALU is <em>incomplete</em>, causing R-type and I-type instructions not listed above to yield incorrect results.</p>
+<h3 id="walkthrough-1-testing-a-simple-r-type-instruction">Walkthrough #1: Testing a simple R-type Instruction</h3>
+<p>To help you get familiarized with the processor, let's try running a simple <code>add x4, x1, x2</code> instruction. To see the effects of running this instruction, it is helpful to assign non-zero values to some of the registers.</p>
+<ol>
+<li>
+<p>Open the Register file and change the value of the following registers:</p>
+<ul>
+<li><code>x1 = 00000001</code></li>
+<li><code>x2 = 00000002</code></li>
+<li><code>x3 = 00000003</code></li>
+</ul>
+</li>
+<li>
+<p>Load the <code>add x4, x1, x2</code> instruction in hex (<code>0x00208233</code>) to the instruction memory</p>
+</li>
+<li>
+<p>Go back to the  <code>mcpfull</code> main component and verify that the processor is still at <code>State 0</code> or the <code>Fetch</code> stage (without ticking the clock, the processor by default starts at the <code>Fetch</code> stage). The state number is labeled as <code>STATE</code> just below the control unit. Verify that the control signals are correct according to <code>State 0</code> of the FSM of the MCP Control Signals.</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Volatile memory</p>
+<p>Unlike the single-cycle processor in the previous lab, the memory component is set as <em>volatile</em>– everytime you reset the simulation, the entire address space <em>(<strong>which includes loaded instructions</strong>)</em> is also reset to zero.</p>
+<p>This is done to ensure modifications to other parts of memory <em>(e.g., stack memory)</em> do not persist through resets as this may make debugging harder.</p>
+</div>
+<p><img alt="FSM of MCP Control Signals" src="../multiFSM.png" /></p>
+<ol>
+<li>
+<p>Manually tick the clock at the lower left hand side of the circuit. Make sure that you tick once only. This should change the state of the processor to <code>State 1</code>.</p>
+</li>
+<li>
+<p>Observe and verify that the changes of the control signals follow the control signals as the states change in this manner after <code>State 1</code> &gt; <code>State 6</code> &gt; <code>State 7</code> &gt; `State 0</p>
+</li>
+<li>
+<p>After executing the <code>add</code> instruction, verify that the changes to the register file is correct.</p>
+</li>
+</ol>
+<h3 id="waltkthrough-2-adding-a-hypothetical-jal8-instruction">Waltkthrough #2: Adding a Hypothetical <code>jal8</code> instruction</h3>
+<p>We will now add microarchitecture support for a hypothetical <code>jal8</code> instruction.</p>
+<p><code>jal8</code> is a hypothetical instruction that works like <code>jal</code>, but stores <code>PC + 8</code> instead of <code>PC + 4</code>. In other words, it has the following parallel goals:</p>
+<ul>
+<li><code>REG[rd] = PC + 8</code></li>
+<li><code>PC = PC + SignExt(imm)</code></li>
+</ul>
+<p>Assume that executing <code>jal8</code> starts by performing <code>Fetch</code> and <code>Decode</code>. As such, we can assume that the architectural and nonarchitectural states of the multicycle processor are then as follows:</p>
+<ul>
+<li><code>OldPC = PC</code></li>
+<li><code>PC = PC + 4</code></li>
+<li><code>A = REG[rs1]</code></li>
+<li><code>B = REG[rs2]</code></li>
+<li><code>ALUOut = PC + SignExt(imm)</code></li>
+</ul>
+<p>There are several ways to achieve the goals of <code>jal8</code> from here, with varying degrees of modification to the datapath and control.</p>
+<p>The approach described below adds a new control state <code>JAL8</code> which is intended to follow after <code>Decode</code> if the instruction is a <code>jal8</code>.</p>
+<h3 id="designing-a-new-jal8-control-state">Designing a new <code>JAL8</code> control state</h3>
+<p>Since <code>ALUOut</code> already contains <code>PC + SignExt(imm)</code> after <code>Decode</code>, <code>JAL8</code> can simply set it as the value of <code>PC</code> to achieve the <code>PC = PC + SignExt(imm)</code> goal.</p>
+<p>In particular, the following control signals must be set:</p>
+<ul>
+<li><code>ResultSrc = 00</code> so that <code>ALUOut</code> is the output of the <code>Result</code> multiplexer</li>
+<li><code>PCWrite = 1</code> so that <code>PC</code> is updated with the output of the <code>Result</code> multiplexer after the next triggering edge</li>
+</ul>
+<p>This leaves the <code>REG[rd] = PC + 8</code> goal which involves writing to the register file. Recall that <code>PC</code> here refers to the <em>original</em> <code>PC</code> value, which is stored in <code>OldPC</code> as <code>PC</code> is now <code>PC + 4</code> <em>(i.e., <code>PC = OrigPC + 4</code>)</em>.</p>
+<p>Since the ALU is still unused in the <code>JAL8</code> state, we can compute <code>PC + 8</code> <em>(or more precisely, <code>OrigPC + 4 + 4</code>)</em> in parallel via the following control signals:</p>
+<ul>
+<li><code>ALUSrcA = 00</code> so that <code>PC</code> is the first ALU operand <em>(which contains <code>OrigPC + 4</code> at this point)</em></li>
+<li><code>ALUSrcB = 10</code> so that <code>4</code> is the second ALU operand</li>
+<li><code>ALUOp = 00</code> so that <code>ALUControl</code> is set to <code>000</code> <em>(addition)</em></li>
+</ul>
+<p>The only step left is to write this sum to <code>REG[rd]</code>.</p>
+<p>Recall that:</p>
+<ul>
+<li>We have already set the <code>Result</code> multiplexer to output <code>ALUOut</code> via <code>ResultSrc = 00</code></li>
+<li>The <code>WD3</code> port of the register file <em>(which dictates the value to be written)</em> is <em>also</em> connected to the output of the <code>Result</code> multiplexer</li>
+<li>Our remaining goal is to write <code>PC + 8</code> to <code>REG[rd]</code></li>
+</ul>
+<p>Given the above, we will be unable to write <code>PC + 8</code> to <code>REG[rd]</code> in parallel with writing <code>OldPC + SignExt(imm)</code> to <code>PC</code>.</p>
+<p>While we can move the execution of <code>REG[rd] = PC + 8</code> to another new state after <code>JAL8</code>, recall that:</p>
+<ul>
+<li><code>ALUOut</code> automatically saves the result of the ALU computation of the previous cycle</li>
+<li>The existing <code>ALUWB</code> operation performs <code>REG[rd] = ALUOut</code></li>
+</ul>
+<p>As such, doing <code>PC + 8</code> during the <code>JAL8</code> cycle will allow us to perform <code>REG[rd] = PC + 8</code> by doing <code>ALUWB</code> after.</p>
+<p>In summary, the new <code>JAL8</code> control state sets the following control signals:</p>
+<ul>
+<li><code>ResultSrc = 00</code></li>
+<li><code>PCWrite = 1</code></li>
+<li><code>ALUSrcA = 00</code></li>
+<li><code>ALUSrcB = 10</code></li>
+<li><code>ALUOp = 00</code></li>
+<li><code>RegWrite = 0</code> <em>(since the register file must not yet be written to)</em></li>
+<li><code>MemWrite = 0</code> <em>(since memory must not be written to)</em></li>
+<li><code>IRWrite = 0</code> <em>(since <code>Instr</code> and <code>OldPC</code> must not be updated)</em></li>
+</ul>
+<p>Doing so results in the following state changes:</p>
+<ul>
+<li><code>PC = OldPC + SignExt(imm)</code></li>
+<li><code>ALUOut = OrigPC + 8</code></li>
+</ul>
+<p><code>jal8</code> can thus be handled using the following four-cycle sequence:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Cycle</th>
+<th style="text-align: center;">Operation</th>
+<th>Resulting state after triggering edge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><code>Fetch</code></td>
+<td><code>PC = OrigPC + 4</code><br><code>OldPC = OrigPC</code><br><code>Instr = MEM[OrigPC]</code><br><code>A = 💩</code><br><code>B = 💩</code><br><code>ALUOut = 💩</code><br><code>REG[rd] = 💩</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><code>Decode</code></td>
+<td><code>PC = OrigPC + 4</code><br><code>OldPC = OrigPC</code><br><code>Instr = MEM[OrigPC]</code><br><code>A = REG[rs1]</code><br><code>B = REG[rs2]</code><br><code>ALUOut = OrigPC + SignExt(imm)</code><br><code>REG[rd] = 💩</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><code>JAL8</code></td>
+<td><code>PC = OrigPC + SignExt(imm)</code><br><code>OldPC = OrigPC</code><br><code>Instr = MEM[OrigPC]</code><br><code>A = REG[rs1]</code><br><code>B = REG[rs2]</code><br><code>ALUOut = PC + 8</code><br><code>REG[rd] = 💩</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><code>ALUWB</code></td>
+<td><code>PC = OrigPC + SignExt(imm)</code><br><code>OldPC = OrigPC</code><br><code>Instr = MEM[OrigPC]</code><br><code>A = REG[rs1]</code><br><code>B = REG[rs2]</code><br><code>ALUOut = 💩</code><br><code>REG[rd] = OrigPC + 8</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="implementing-the-new-state">Implementing the new state</h3>
+<p>Before implementing new <code>JAL8</code> state, we first have to assign a state value to it. Since <code>S0</code> up to <code>S10</code> are already used, we can use <code>S11</code>.</p>
+<p>To implement the new <code>JAL8</code> state, follow these steps:</p>
+<ol>
+<li>
+<p>Open the <code>controlunit</code> implementation. Verify that the following subcircuits are present:</p>
+</li>
+<li>
+<p><code>maindecoder</code> – Moore circuit computing almost all of the control signals</p>
+</li>
+<li><code>nextstatelogic</code> – Combinational circuit controlling state transitions</li>
+<li><code>aludecoder</code> – Combinational circuit computing <code>ALUControl</code></li>
+<li><code>instrdecoder</code> – Combinational circuit computing <code>ImmSrc</code></li>
+</ol>
+<p>Of the subcircuits listed, only the ALU decoder does not need to be modified for <code>JAL8</code> as there were no changes made to the operation of the ALU.</p>
+<p><strong>Main Decoder</strong> Open up <code>maindecoder</code> and verify that you can see how each control signal is computed using only the current state.</p>
+<div class="admonition example">
+<p class="admonition-title">Do now!</p>
+<p>Assuming that the current state is <code>Decode</code> <em>(<code>S1</code> or <code>0001</code>)</em>, identify the values emitted by <code>maindecoder</code> for the following based on its Logisim implementation:</p>
+<ul>
+<li><code>PCUpdate</code></li>
+<li><code>Branch</code></li>
+<li><code>MemWrite</code></li>
+<li><code>IRWrite</code></li>
+<li><code>RegWrite</code></li>
+<li><code>AdrSrc</code></li>
+<li><code>ALUSrcA</code></li>
+<li><code>ALUSrcB</code></li>
+<li><code>ALUOp</code></li>
+<li><code>ResultSrc</code></li>
+</ul>
+<p>Note that floating values <em>(i.e., <code>U</code>)</em> are taken to be <em>don't cares</em> <em>(i.e., <code>X</code>)</em>.</p>
+</div>
+<p>Recall that our new <code>JAL8</code> state is assigned to <code>S11</code> and that it must set the following control signals as follows:</p>
+<ul>
+<li><code>ResultSrc = 00</code></li>
+<li><code>PCWrite = 1</code></li>
+<li><code>ALUSrcA = 00</code></li>
+<li><code>ALUSrcB = 10</code></li>
+<li><code>ALUOp = 00</code></li>
+<li><code>RegWrite = 0</code></li>
+<li><code>MemWrite = 0</code></li>
+<li><code>IRWrite = 0</code></li>
+</ul>
+<p>Recall that <code>PCWrite</code> is indirectly influenced by <code>maindecoder</code> via the <code>PCUpdate</code> and <code>Branch</code> control signals <em>(where <code>PCWrite = PCUpdate | (Branch &amp; Zero)</code>)</em>. Since <code>PCWrite</code> must always be <code>1</code> for <code>JAL8</code>, it should set <code>PCUpdate</code> to <code>1</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Do now!</p>
+<p>For each control signal computed in <code>maindecoder</code>, locate its input port labeled "input 11" <em>(corresponding to S11)</em>, then add a <code>Constant</code> component corresponding to the value <code>JAL8</code> is supposed to set the said control signal to.</p>
+<p>Ensure that the existing connections are kept intact.</p>
+<p>To verify your implementation, you may use the Poke tool to manually set the individual bits of the <code>State</code> input and confirm that the outputs shown are as intended.</p>
+</div>
+<p><strong>Next State Logic.</strong> Open up the <code>nextstatelogic</code> and examine how <code>NextState</code> is being computed from the current state and the current instruction.</p>
+<div class="admonition example">
+<p class="admonition-title">Do now!</p>
+<p>Recall that <code>S1 (Decode)</code> has the following next state transitions:</p>
+<ul>
+<li><code>S2 (MemAddr)</code> if current instruction is <code>lw</code> or <code>sw</code></li>
+<li><code>S6 (ExecuteR)</code> if current instruction is <code>lw</code> or <code>sw</code></li>
+<li><code>S8 (ExecuteI)</code> if current instruction is an I-type ALU</li>
+<li><code>S9 (JAL)</code> if current instruction is <code>jal</code></li>
+<li><code>S10 (BEQ)</code> if current instruction is <code>beq</code></li>
+</ul>
+<p>Ensure that you understand how a priority encoder is used to determine which kind of instruction is being executed.</p>
+<p>Verify that the implementation for <code>NextS1</code> is consistent with the state transitions listed above for <code>S1 (Decode)</code>.</p>
+<p>Verify as well that the implementation for <code>NextState</code> ensures that <code>NextS1</code> will be selected when the current state is <code>S1 (Decode)</code>.</p>
+</div>
+<p>Recall that we want the <code>JAL8</code> state to come after the <code>Decode</code> state, but only when executing the <code>JAL8</code> instruction, and that we want <code>ALUWB</code> to come after <code>JAL8</code>.</p>
+<p>To do this, we need to be able to detect that the current instruction being executed is <code>JAL8</code>. We will define <code>JAL8</code> as having an opcode of <code>0b1101110</code> or <code>0x6e</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Do now!</p>
+<p>To make <code>S1 (Decode)</code> transition to <code>S11 (JAL8)</code> when the current instruction is <code>JAL8</code>, do the following:</p>
+<ul>
+<li>
+<p>Add a new comparator that compares the <code>opcode</code> <em>(using a tunnel)</em> and <code>0010111</code> <em>(as a constant)</em>, then set the equality result to a new <code>IsJAL8</code> tunnel</p>
+</li>
+<li>
+<p>Add another <code>IsJAL8</code> tunnel to "Input 6" of the priority encoder used to generate <code>Selector</code></p>
+</li>
+<li>
+<p>Set the value of the "Input 6" port of the multiplexer computing <code>NextS1</code> to <code>b</code> <em>(corresponding to <code>S11 (JAL8)</code>)</em></p>
+</li>
+</ul>
+<p>To make <code>S11 (JAL8)</code> transition to <code>S7 (ALUWB)</code> regardless of the current instruction, do the following:</p>
+<ul>
+<li>
+<p>Create a new tunnel <code>NextS11</code> and set its input to <code>7</code> <em>(corresponding to <code>S7 (ALUWB)</code>)</em></p>
+</li>
+<li>
+<p>Connect another <code>NextS11</code> tunnel to the "Input 11" port of the multiplexer computing <code>NextState</code></p>
+</li>
+</ul>
+<p>Ensure you understand the reason why each step was done.</p>
+</div>
+<p><strong>Instruction decoder and extend unit.</strong> Recall that the instruction decoder is in charge of computing <code>ImmSrc</code>, which is used by the extend unit to determine how the immediate value will be constructed from the instruction bits. Also, recall that J-type instructions correspond to <code>ImmSrc = 011</code>. Open up <code>instrdecoder</code> and verify that the instruction detection logic is similar to that of <code>nextstatelogic</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Do now!</p>
+<p>Add a comparator and <code>IsJAL8</code> tunnels similar to the previous section, then set the value of "Input 6" port of the multiplexer computing <code>ImmSrc</code> to <code>3</code> <em>(which corresponds to <code>0b011</code>)</em>.</p>
+</div>
+<p><strong>Verification.</strong> The changes in the earlier sections should be enough for the multicycle processor to properly execute the <code>jal8</code> instruction.</p>
+<p>To check whether you have implemented <code>jal8</code> correctly, you may use this simple test program:</p>
+<div class="language-mips highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">add</span><span class="w"> </span>x0<span class="nb">,</span><span class="w"> </span>x0<span class="nb">,</span><span class="w"> </span>x0<span class="w">  </span><span class="c"># 0:  00000033</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>jal8<span class="w"> </span>x1<span class="nb">,</span><span class="w"> </span><span class="kc">12</span><span class="w">     </span><span class="c"># 4:  00c000ee</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">add</span><span class="w"> </span>x1<span class="nb">,</span><span class="w"> </span>x1<span class="nb">,</span><span class="w"> </span>x1<span class="w">  </span><span class="c"># 8:  001080b3</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">add</span><span class="w"> </span>x1<span class="nb">,</span><span class="w"> </span>x1<span class="nb">,</span><span class="w"> </span>x1<span class="w">  </span><span class="c"># c:  001080b3</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">add</span><span class="w"> </span>x0<span class="nb">,</span><span class="w"> </span>x0<span class="nb">,</span><span class="w"> </span>x0<span class="w">  </span><span class="c"># 10: 00000033</span>
+</span></code></pre></div>
+<p>After execution of the test program, <code>x1</code> is expected to have a value of <code>0xc</code> with all other general-purpose registers equal to <code>0x0</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Do now!</p>
+<p>Enter the corresponding machine instructions in the memory of the multicycle processor, then tick the clock until it says <code>12</code> ticks <em>(or when the stated <code>PC</code> value is <code>0x14</code>)</em>.</p>
+<p>Verify that the register values shown in the <strong>State</strong> tab of Logisim are consistent with the register values shown above.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Verification of existing instructions</p>
+<p>The test above does not verify whether the other supported instructions still work as intended.</p>
+<p>You are strongly encouraged to make a more comprehensive test program that involves <code>lw</code>, <code>sw</code>, <code>add</code>, <code>sub</code>, <code>and</code>, <code>or</code>, <code>slt</code>, <code>addi</code>, <code>beq</code>, and <code>jal</code>.</p>
+</div>
+<h2 id="checkpoint-tasks">Checkpoint Tasks</h2>
+<h3 id="checkpoint-item-1-ensure-that-your-jal8-implementation-is-working-20100">Checkpoint Item 1: Ensure that your JAL8 implementation is working  (20/100)</h3>
+<p>Call the attention of the lab handler and show that you have successfully implemented <code>JAL8</code> by showing that the test program above gets the correct behavior and changes to register file and <code>PC</code>.</p>
+<h3 id="checkpoint-item-2-make-the-mcp-capable-of-running-bne-40100">Checkpoint Item 2: Make the MCP capable of running  <code>bne</code>  (40/100)</h3>
+<p>Modify the given Logisim circuit to add a new state say <code>State 12</code> to support the B-type instruction <code>bne</code>.</p>
+<p>Ensure that all other instructions that were supported before by the template still work as intended. What are the state transitions for the <code>bne</code> and how many cycles does it take to finish execution?</p>
+<p>You are allowed to use tunnels.</p>
+<p>Save the resulting circuit as <code>lab05_checkpoint.circ</code>.</p>
+<h2 id="take-home-problems">Take Home Problems</h2>
+<h3 id="item-1-make-the-mcp-capable-of-running-xori-20100">Item 1: Make the MCP capable of running  <code>xori</code>  (20/100)</h3>
+<p>Starting from the working MCP template after the Walkthrough, add microarchitecture support for an <code>xori</code> instruction. </p>
+<p>Ensure that all other instructions that were supported before by the template still work as intended. What new state did you have to create, if any?</p>
+<p>You are allowed to use tunnels.</p>
+<p>Save this working circuit as <code>lab05_takehome1.circ</code>. </p>
+<h3 id="item-2-mcp-capable-of-sll-20100">Item 2: MCP Capable of <code>sll</code> (20/100)</h3>
+<p>Starting from the working MCP circuit capable of <code>xori</code> from Take Home Problem Item 1, add microarchitecture support for a <code>sll</code> instruction. Save this working circuit as <code>lab05_takehome2.circ</code></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../js/mermaid.mjs" type="module"></script>
+      
+    
+  </body>
+</html>
