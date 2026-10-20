@@ -32,6 +32,7 @@ Understand the single-cycle processor template. Note that the ALU is **incomplet
 
 ### Walkthrough #1: Running a single instruction
 
+
 Suppose we want the processor to execute the following instruction:
 
 ```mips
