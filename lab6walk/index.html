@@ -1,0 +1,1879 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lab5/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>CS 21 26.1 Lab 6 Walkthrough - CS 21 26.1 Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CS 21 26.1 Labs" class="md-header__button md-logo" aria-label="CS 21 26.1 Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS 21 26.1 Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CS 21 26.1 Lab 6 Walkthrough
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CS 21 26.1 Labs" class="md-nav__button md-logo" aria-label="CS 21 26.1 Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CS 21 26.1 Labs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2 Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab 3
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3 Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab 4
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4 Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab 5
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5walk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5 Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 6
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab 6
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 6 Guide
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab 6 Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relevant-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relevant Links
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Instructions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#walkthrough-1-familiarizing-yourself-with-the-pipeline-logisim-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Walkthrough #1: Familiarizing Yourself with the Pipeline Logisim Implementation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Walkthrough #1: Familiarizing Yourself with the Pipeline Logisim Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-load-the-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Load the Instruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-load-data-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Load data memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-initialize-registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Initialize registers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-practice-clock-stepping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Practice Clock Stepping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-trace-the-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Trace the Instructions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 5: Trace the Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observation-a-arithmetic-in-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation A: Arithmetic in Execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observation-b-a-load-calculates-an-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation B: A load calculates an address
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observation-c-immediate-arithmetic-overlaps-the-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation C: Immediate arithmetic overlaps the load
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observation-d-writeback-and-architectural-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation D: Writeback and architectural state
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#walkthrough-2-stalls-and-flushes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Walkthrough #2: Stalls and Flushes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Walkthrough #2: Stalls and Flushes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#experiment-a-stall-fetch-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment A: Stall Fetch only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiment-b-hold-fetch-and-decode-and-insert-a-bubble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment B: Hold Fetch and Decode and insert a bubble
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiment-c-flush-decode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment C: Flush Decode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relevant-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relevant Links
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Instructions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="General Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#walkthrough-1-familiarizing-yourself-with-the-pipeline-logisim-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Walkthrough #1: Familiarizing Yourself with the Pipeline Logisim Implementation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Walkthrough #1: Familiarizing Yourself with the Pipeline Logisim Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-load-the-instruction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Load the Instruction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-load-data-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Load data memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-initialize-registers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Initialize registers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-practice-clock-stepping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Practice Clock Stepping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-trace-the-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Trace the Instructions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 5: Trace the Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observation-a-arithmetic-in-execute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation A: Arithmetic in Execute
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observation-b-a-load-calculates-an-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation B: A load calculates an address
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observation-c-immediate-arithmetic-overlaps-the-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation C: Immediate arithmetic overlaps the load
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observation-d-writeback-and-architectural-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation D: Writeback and architectural state
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#walkthrough-2-stalls-and-flushes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Walkthrough #2: Stalls and Flushes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Walkthrough #2: Stalls and Flushes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#experiment-a-stall-fetch-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment A: Stall Fetch only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiment-b-hold-fetch-and-decode-and-insert-a-bubble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment B: Hold Fetch and Decode and insert a bubble
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiment-c-flush-decode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experiment C: Flush Decode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h2 align="center"> CS 21 26.1 Lab 6 Walkthrough </h2>
+<h1 align="center"> Pipelined Processor in Logisim </h1>
+
+<h2 id="overview">Overview</h2>
+<p>In the lecture, we introduced the RISC-V Pipelined Processor.  In this lab activity, you will be using Logisim to modify an existing pipelined RISC-V processor implementation to support other kinds of instructions.</p>
+<p>Your main task for Lab 6 (details to follow) is to implement the forwarding mechanism by creating the hazard unit for the given Pipeline Processor implementation in Logisim. But before that, this walkthrough will familiarize you with the given Pipeline Processor Logisim implementation.</p>
+<h2 id="relevant-links">Relevant Links</h2>
+<ul>
+<li><strong>Ripes Fork:</strong> <a href="https://ripes.upd-dcs.work">https://ripes.upd-dcs.work</a></li>
+<li><strong>Lab 6 Logisim Template:</strong> <a href="https://drive.google.com/file/d/1YIG0GWN8k4u7n-qk0t6r8i7NrUMPpal9/view?usp=sharing">https://drive.google.com/file/d/1YIG0GWN8k4u7n-qk0t6r8i7NrUMPpal9/view?usp=sharing</a></li>
+<li><strong>Instruction Memory Image File:</strong> <a href="https://drive.google.com/file/d/1dz_vNA9nIndfM-17Q-lqdOc_KuWycT-2/view?usp=sharing">Instruction memory image</a></li>
+<li><strong>Data Memory Image File:</strong> <a href="https://drive.google.com/file/d/1QqreTP0v39KNsuxY7TQCXeuB4oGMQKib/view?usp=sharing">Data memory image</a></li>
+</ul>
+<h2 id="general-instructions">General Instructions</h2>
+<ol>
+<li>
+<p>Work on this walkthrough and write your answers to <strong>all self-check QUESTIONS</strong> in a document. Save this as <code>lab06-lastname-self-check.pdf</code>. Submit this file <strong>before 11:59 PM on October 27, 2026</strong> in Google Classroom. You may work or discuss among your classmates, but you should write your asnwers to the questions and submit your output individually. This output is worth <strong>30/100</strong> points of your Lab 6 score.</p>
+</li>
+<li>
+<p>The main Lab 6 activity worth <strong>70/100</strong> points will be released within this week and will be due a week after.</p>
+</li>
+</ol>
+<p>Download the Lab 6 Logisim Template using the link above. This processor implementation supports the following instructions:</p>
+<ul>
+<li><code>lw</code></li>
+<li><code>sw</code></li>
+<li><code>add</code></li>
+<li><code>sub</code></li>
+<li><code>and</code></li>
+<li><code>or</code></li>
+<li><code>slt</code></li>
+<li><code>addi</code></li>
+<li><code>beq</code></li>
+<li><code>jal</code></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Recommended zoom level</p>
+<p>The given template is meant to be viewed at a zoom level of <strong>x0.9</strong>.</p>
+</div>
+<p>The bottom part of the template consists of the pipelined datapath and control while the top part provides a view of important values arranged by pipeline stage.</p>
+<p>Save a working copy of the circuit as <code>lab06.circ</code> before starting. Do not modify the datapath during this activity.</p>
+<div class="admonition info">
+<p class="admonition-title">No forwarding required for this first trace</p>
+<p>These three instructions have no read-after-write dependency on one another. They can execute correctly in the original template with all manual stall and flush controls set to <code>0</code>.</p>
+</div>
+<h3 id="walkthrough-1-familiarizing-yourself-with-the-pipeline-logisim-implementation">Walkthrough #1: Familiarizing Yourself with the Pipeline Logisim Implementation</h3>
+<p>This walkthrough is a guided activity that will help you become familiar and comfortable with using the Logisim implementation of a RISC-V 5-stage Pipeline processor. </p>
+<p>Open the Logisim circuit, select <code>main</code>, and disable automatic clock ticking. Set the zoom to approximately <strong>x0.9</strong>.</p>
+<p>Identify the five stages in the lower datapath and their corresponding signal displays in the upper portion of the circuit.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Suffix</th>
+<th>Stage</th>
+<th>Main purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>F</code></td>
+<td>Fetch</td>
+<td>Read an instruction using the program counter</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>D</code></td>
+<td>Decode</td>
+<td>Decode the instruction and read registers</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>E</code></td>
+<td>Execute</td>
+<td>Perform arithmetic or calculate an address</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>M</code></td>
+<td>Memory</td>
+<td>Read or write data memory</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>W</code></td>
+<td>Writeback</td>
+<td>Select a result for writing to a register</td>
+</tr>
+</tbody>
+</table>
+<p>For example, <code>RD1E</code> is a register operand available in Execute, while <code>ALUResultM</code> is an ALU result carried into Memory.</p>
+<p>In this walkthrough, we will simulate this RISC-V code:</p>
+<div class="language-mips highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">add</span><span class="w">  </span>s2<span class="nb">,</span><span class="w"> </span>s0<span class="nb">,</span><span class="w"> </span>s1
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">lw</span><span class="w">   </span>s4<span class="nb">,</span><span class="w"> </span><span class="kc">4</span>(s3)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">addi</span><span class="w"> </span>s3<span class="nb">,</span><span class="w"> </span>s1<span class="nb">,</span><span class="w"> </span><span class="kc">2</span>
+</span></code></pre></div>
+<p>Download the instruction memory image from the link above.</p>
+<p>Take note of the following initial register values:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Register</th>
+<th style="text-align: center;">Register number</th>
+<th style="text-align: center;">Decimal</th>
+<th style="text-align: center;">Hexadecimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>s0</code></td>
+<td style="text-align: center;"><code>x8</code></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;"><code>0000000a</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>s1</code></td>
+<td style="text-align: center;"><code>x9</code></td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;"><code>00000007</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>s2</code></td>
+<td style="text-align: center;"><code>x18</code></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><code>00000000</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>s3</code></td>
+<td style="text-align: center;"><code>x19</code></td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;"><code>00000010</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>s4</code></td>
+<td style="text-align: center;"><code>x20</code></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><code>00000000</code></td>
+</tr>
+</tbody>
+</table>
+<p>Download the data memory image from the link above. The data memory image given above  places the value <strong>42</strong> (<code>0x2a</code>) at <strong>byte address 20</strong> (<code>0x14</code>).</p>
+<p>Before running the program, make sure that you know what should be the final state of the register file after the execution of the entire program. </p>
+<h4 id="step-1-load-the-instruction">Step 1: Load the Instruction</h4>
+<ol>
+<li>
+<p>Before you start, make sure that the circuit is at the Reset state. Select <strong>Simulate &gt; Reset Simulation</strong>.</p>
+</li>
+<li>
+<p>Using the <strong>Poke</strong> tool, ensure that the four manual controls are set to <code>0</code>:</p>
+</li>
+</ol>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>StallF = 0
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>StallD = 0
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>FlushD = 0
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>FlushE = 0
+</span></code></pre></div>
+3. Open the <strong>Instruction Memory</strong> labeled <code>InstMem</code> and load the instruction to the ROM using the image file <code>lab6-program.txt</code>. After this, return to <code>main</code>.</p>
+<p>The first three instruction words are:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Instruction byte address</th>
+<th style="text-align: center;">ROM word index</th>
+<th style="text-align: center;">Machine code</th>
+<th>Instruction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>0x00</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: center;"><code>00940933</code></td>
+<td><code>add s2, s0, s1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>0x04</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;"><code>0049aa03</code></td>
+<td><code>lw s4, 4(s3)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>0x08</code></td>
+<td style="text-align: center;"><code>2</code></td>
+<td style="text-align: center;"><code>00248993</code></td>
+<td><code>addi s3, s1, 2</code></td>
+</tr>
+</tbody>
+</table>
+<p>The image also contains trailing <code>nop</code> instructions (<code>addi zero, zero, 0</code>) so that you can continue stepping while the three instructions finish.</p>
+<div class="admonition info">
+<p class="admonition-title">Byte addresses and word indices</p>
+<p>The PC increases by <strong>4 bytes</strong> for each sequential instruction. The instruction ROM stores 32-bit words, so instruction byte addresses <code>0</code>, <code>4</code>, and <code>8</code> correspond to ROM word indices <code>0</code>, <code>1</code>, and <code>2</code>.</p>
+</div>
+<h4 id="step-2-load-data-memory">Step 2: Load data memory</h4>
+<p>Enter the <strong>data memory</strong> labeled <code>DataMem</code> and load <code>lab6-data.txt</code> to the RAM. Verify that RAM word index <code>5</code> contains <code>0000002a</code>.</p>
+<p>In this circuit, the RAM index is obtained by removing the two lowest byte-address bits. Therefore:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Byte address 20 / 4 bytes per word = RAM word index 5
+</span></code></pre></div>
+<h4 id="step-3-initialize-registers">Step 3: Initialize registers</h4>
+<p>Enter the <strong>register-file instance used by <code>main</code></strong>. With the Poke tool, select and edit the stored values of the following registers:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>x8  = 0000000a
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>x9  = 00000007
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>x19 = 00000010
+</span></code></pre></div>
+<p>Verify that <code>x18</code> and <code>x20</code> contain zero, then return to <code>main</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Edit the live instance</p>
+<p>Enter the register-file instance from <code>main</code> when changing simulation state. Opening only the subcircuit definition from the project list may show a separate simulation context.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Reset before initialization</p>
+<p>Do not reset after entering the register values. If you reset again, reinitialize the registers and verify the memory contents before continuing.</p>
+</div>
+<h4 id="step-4-practice-clock-stepping">Step 4: Practice Clock Stepping</h4>
+<p>Before ticking the clock, locate <code>PCF</code>, <code>PC4F</code>, and <code>InstrF</code>. Verify the following:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>PCF    = 00000000
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>PC4F   = 00000004
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>InstrF = 00940933
+</span></code></pre></div>
+<ol>
+<li>Select <strong>Simulate &gt; Manual Tick Half Cycle</strong> once.</li>
+<li>Observe the clock level and pipeline displays.</li>
+<li>Select <strong>Manual Tick Half Cycle</strong> again.</li>
+<li>Observe which pipeline values changed at each clock transition.</li>
+</ol>
+<p>A half-cycle toggles the clock once. A full cycle includes both transitions. Pipeline registers update on their triggering edge.</p>
+<p>For the rest of the main trace, use <strong>Manual Tick Full Cycle</strong> consistently. Count the two half-cycle ticks you just performed as the first full cycle.</p>
+<p>Track the first instruction using its <code>PC + 4</code> value:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>PC4D → PC4E → PC4M → PC4W
+</span></code></pre></div>
+<p>For the first instruction, that value remains <code>00000004</code> as it moves through the pipeline.</p>
+<p><strong>Self-Check:</strong> 
+At this point, make sure that you observe the following:</p>
+<ul>
+<li>The PC normally advances by <code>4</code> bytes.</li>
+<li>An instruction's PC-related value moves one stage on each advancing pipeline edge.</li>
+<li>Several instructions occupy different stages simultaneously.</li>
+<li>Combinational outputs can settle after an input changes without another clock tick.</li>
+<li>An ALU result appearing does not mean the destination register has already changed.</li>
+</ul>
+<p>To check your understanding, answer this: If <code>PC4E = 00000008</code>, which instruction is in Execute?</p>
+<h3 id="step-5-trace-the-instructions">Step 5: Trace the Instructions</h3>
+<p>Use this table to track the instructions. <strong>Step 0</strong> is the initial state before the first rising edge, with <code>add</code> already visible in Fetch. Each later row describes the state after another rising edge. Your earlier clock-stepping exercise has already advanced the simulation; do not restart the count accidentally.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Step</th>
+<th style="text-align: center;">Fetch</th>
+<th style="text-align: center;">Decode</th>
+<th style="text-align: center;">Execute</th>
+<th style="text-align: center;">Memory</th>
+<th style="text-align: center;">Writeback</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><code>add</code></td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><code>lw</code></td>
+<td style="text-align: center;"><code>add</code></td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><code>addi</code></td>
+<td style="text-align: center;"><code>lw</code></td>
+<td style="text-align: center;"><code>add</code></td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><code>nop</code></td>
+<td style="text-align: center;"><code>addi</code></td>
+<td style="text-align: center;"><code>lw</code></td>
+<td style="text-align: center;"><code>add</code></td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><code>nop</code></td>
+<td style="text-align: center;"><code>nop</code></td>
+<td style="text-align: center;"><code>addi</code></td>
+<td style="text-align: center;"><code>lw</code></td>
+<td style="text-align: center;"><code>add</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><code>nop</code></td>
+<td style="text-align: center;"><code>nop</code></td>
+<td style="text-align: center;"><code>nop</code></td>
+<td style="text-align: center;"><code>addi</code></td>
+<td style="text-align: center;"><code>lw</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"><code>nop</code></td>
+<td style="text-align: center;"><code>nop</code></td>
+<td style="text-align: center;"><code>nop</code></td>
+<td style="text-align: center;"><code>nop</code></td>
+<td style="text-align: center;"><code>addi</code></td>
+</tr>
+</tbody>
+</table>
+<p>A dash means that none of the three target instructions occupies that stage.</p>
+<h4 id="observation-a-arithmetic-in-execute">Observation A: Arithmetic in Execute</h4>
+<p>Stop when <code>PC4E = 00000004</code>. Inspect:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Signal</th>
+<th style="text-align: center;">Expected value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>RD1E</code></td>
+<td style="text-align: center;"><code>0000000a</code></td>
+<td>Value of <code>s0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>RD2E</code></td>
+<td style="text-align: center;"><code>00000007</code></td>
+<td>Value of <code>s1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>RdE</code></td>
+<td style="text-align: center;">18 decimal</td>
+<td>Destination register <code>s2</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ALUSrcE</code></td>
+<td style="text-align: center;"><code>0</code></td>
+<td>Select the register operand</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ALUResultE</code></td>
+<td style="text-align: center;"><code>00000011</code></td>
+<td>Result: 17 decimal</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Check the display radix</p>
+<p>Register numbers and register contents are different quantities. If <code>RdE</code> is displayed in hexadecimal, register number 18 appears as <code>12</code>. The result <code>00000011</code> is hexadecimal for decimal 17.</p>
+</div>
+<p><strong>Self-Check:</strong> Why might <code>s2</code> still contain zero even though <code>ALUResultE</code> already displays 17?</p>
+<h4 id="observation-b-a-load-calculates-an-address">Observation B: A load calculates an address</h4>
+<p>Advance until <code>PC4E = 00000008</code>. Inspect:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Signal</th>
+<th style="text-align: center;">Expected value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>RD1E</code></td>
+<td style="text-align: center;"><code>00000010</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ImmExtE</code></td>
+<td style="text-align: center;"><code>00000004</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ALUSrcE</code></td>
+<td style="text-align: center;"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>ALUResultE</code></td>
+<td style="text-align: center;"><code>00000014</code></td>
+</tr>
+</tbody>
+</table>
+<p>The ALU calculates:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Address = old value of s3 + offset
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>        = 16 + 4
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        = 20 decimal
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>        = 0x14
+</span></code></pre></div>
+<p>Advance one cycle so that the load enters Memory. Verify:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ALUResultM = 00000014
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>ReadDataM  = 0000002a
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>MemWriteM  = 0
+</span></code></pre></div>
+<p><strong>Self-Check:</strong> Should <code>s4</code> receive <code>0x14</code> or <code>0x2a</code>? What does each value represent?</p>
+<h4 id="observation-c-immediate-arithmetic-overlaps-the-load">Observation C: Immediate arithmetic overlaps the load</h4>
+<p>While the load is in Memory, <code>addi</code> is in Execute. Inspect:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>PC4E       = 0000000c
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>RD1E       = 00000007
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>ImmExtE    = 00000002
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>ALUSrcE    = 1
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>ALUResultE = 00000009
+</span></code></pre></div>
+<p><strong>Self-Check:</strong> Why does the ALU use the immediate value 2 instead of <code>RD2E</code>?</p>
+<p>The displayed <code>RD2E</code> is not a meaningful source operand for this instruction because the immediate input is selected.</p>
+<h4 id="observation-d-writeback-and-architectural-state">Observation D: Writeback and architectural state</h4>
+<p>As each instruction reaches Writeback, inspect <code>RegWriteW</code>, <code>RdW</code>, and <code>ResultW</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th style="text-align: center;"><code>RegWriteW</code></th>
+<th style="text-align: center;">Destination, decimal</th>
+<th style="text-align: center;"><code>ResultW</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>add</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;">18 (<code>s2</code>)</td>
+<td style="text-align: center;"><code>00000011</code></td>
+</tr>
+<tr>
+<td><code>lw</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;">20 (<code>s4</code>)</td>
+<td style="text-align: center;"><code>0000002a</code></td>
+</tr>
+<tr>
+<td><code>addi</code></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: center;">19 (<code>s3</code>)</td>
+<td style="text-align: center;"><code>00000009</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Observe both clock edges</p>
+<p>The supplied circuit inverts the clock entering the register file. Register-file writes therefore occur on the opposite clock edge from the main pipeline-register updates. Observe two half-cycle ticks during Writeback to distinguish a value being present in the W stage from the destination register receiving it.</p>
+</div>
+<p>Continue until you have completed <strong>seven full clock cycles from the initial reset</strong>, allowing all three writes to complete. Inspect the <strong>State</strong> tab or the live register-file instance:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Register</th>
+<th style="text-align: center;">Expected decimal value</th>
+<th style="text-align: center;">Expected hexadecimal value</th>
+<th style="text-align: center;">Your observation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>s2</code> / <code>x18</code></td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;"><code>00000011</code></td>
+<td style="text-align: center;"><strong><em>_</em></strong>___</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>s4</code> / <code>x20</code></td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;"><code>0000002a</code></td>
+<td style="text-align: center;"><strong><em>_</em></strong>___</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>s3</code> / <code>x19</code></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;"><code>00000009</code></td>
+<td style="text-align: center;"><strong><em>_</em></strong>___</td>
+</tr>
+</tbody>
+</table>
+<h3 id="walkthrough-2-stalls-and-flushes">Walkthrough #2: Stalls and Flushes</h3>
+<p>The template includes a manual control pins for the following control signals:</p>
+<ol>
+<li><code>StallF</code></li>
+<li><code>StallD</code></li>
+<li><code>FlushD</code></li>
+<li><code>FlushE</code></li>
+</ol>
+<p>Locate this in the upper left portion of the <code>main</code> circuit just beside the <code>Ticks</code> connected to a clock. Use these manual control pins for the following guided activity. Make sure to reinitialize registers and verify or reload the memory images every time you reset the simulation.</p>
+<h4 id="experiment-a-stall-fetch-only">Experiment A: Stall Fetch only</h4>
+<ol>
+<li>Reset and initialize the processor.</li>
+<li>Advance until the load is in Decode and <code>addi</code> is in Fetch.</li>
+<li>Record <code>PCF</code> and <code>PC4D</code>.</li>
+<li>Set only <code>StallF = 1</code>.</li>
+<li>Advance one full cycle.</li>
+</ol>
+<p><strong>Observe the following:</strong></p>
+<ul>
+<li><code>PCF</code> remains unchanged.</li>
+<li>Decode still updates because <code>StallD = 0</code>.</li>
+<li>The instruction held in Fetch can enter Decode.</li>
+</ul>
+<p><strong>Self-Check:</strong> Does stalling Fetch freeze the entire processor?</p>
+<div class="admonition warning">
+<p class="admonition-title">This is a control experiment</p>
+<p>Stalling Fetch alone can cause an instruction to enter Decode more than once. Do not use this experimental run to validate the program's final results.</p>
+</div>
+<h4 id="experiment-b-hold-fetch-and-decode-and-insert-a-bubble">Experiment B: Hold Fetch and Decode and insert a bubble</h4>
+<ol>
+<li>Reset and initialize again. Advance until the <code>load</code> isntruction is in Decode and <code>addi</code> is in Fetch. Set:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>StallF = 1
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>StallD = 1
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>FlushD = 0
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>FlushE = 1
+</span></code></pre></div></li>
+<li>
+<p>Advance one full cycle.</p>
+<p><strong>Observe the following:</strong>
+- Fetch remains on the same instruction.
+- Decode retains the load.
+- Execute is cleared to a bubble.
+- The older instruction advances into Memory.</p>
+</li>
+<li>
+<p>Return all four controls to <code>0</code>, then advance once more. Verify that the held load advances into Execute.</p>
+</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Connection to the checkpoint</p>
+<p>These are the control actions used for a load-use stall. The three instructions in this activity do not require that stall; you are applying it manually to learn what the controls do.</p>
+</div>
+<h4 id="experiment-c-flush-decode">Experiment C: Flush Decode</h4>
+<p>Set only <code>FlushD = 1</code>, advance one cycle, then return it to <code>0</code>.</p>
+<p><strong>Observe:</strong> The Fetch/Decode register is cleared, including its stored instruction and PC-related values. The PC continues advancing because <code>StallF = 0</code>.</p>
+<p><strong>Self-Check:</strong> How does this differ from setting <code>StallD = 1</code>?</p>
+<p>Before proceeding to the Checkpoint Tasks for Lab 6, ensure that you can:</p>
+<ul>
+<li>Locate the Fetch, Decode, Execute, Memory, and Writeback displays</li>
+<li>Advance the clock without automatic ticking</li>
+<li>Follow an instruction using its PC-related values</li>
+<li>Explain why a load's address differs from its loaded value</li>
+<li>Distinguish a pending writeback from an updated register</li>
+<li>Demonstrate holding a pipeline register and clearing it to a bubble</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../js/mermaid.mjs" type="module"></script>
+      
+    
+  </body>
+</html>
